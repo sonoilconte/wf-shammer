@@ -2,11 +2,7 @@ const axios = require('axios');
 const BASE_URL = 'https://nodes-on-nodes-challenge.herokuapp.com/nodes/';
 
 const requestNodes = async (nodeIds, nodesHash) => {
-    console.log(nodesHash);
-    console.log('Number of keys', Object.keys(nodesHash).length);
-
     const nodesString = nodeIds.join(',');
-
     let data;
     let childNodeIds = [];
     try {
@@ -22,21 +18,19 @@ const requestNodes = async (nodeIds, nodesHash) => {
         });
     }
 
-    let newNodeFound = false;
+    const newNodeIdsFound = [];
     
     childNodeIds.forEach(nodeId => {
         if (nodesHash[nodeId] === undefined) {
             nodesHash[nodeId] = 1;
-            newNodeFound = true;
-            console.log('NEW')
+            newNodeIdsFound.push(nodeId);
         } else {
             nodesHash[nodeId] += 1;
-            console.log('OLD')
         }
     });
 
-    if (newNodeFound) {
-        return requestNodes(childNodeIds, nodesHash);
+    if (newNodeIdsFound.length) {
+        return requestNodes(newNodeIdsFound, nodesHash);
     }
     return nodesHash;
 };
