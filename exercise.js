@@ -14,7 +14,7 @@ const requestNodes = async (nodeIds, nodesHash) => {
     try {
         ({ data } = await axios.get(`${BASE_URL}${nodesString}`));
     } catch (err) {
-        console.log("error");
+        console.log(err);
         return nodesHash;
     }
     
@@ -23,7 +23,6 @@ const requestNodes = async (nodeIds, nodesHash) => {
             childNodeIds = childNodeIds.concat(node.child_node_ids);
         });
     }
-    // console.log({ childNodeIds });
 
     let newNodeFound = false;
     nodeIds.forEach(nodeId => {
@@ -42,13 +41,8 @@ const requestNodes = async (nodeIds, nodesHash) => {
     return nodesHash;
 }
 
-// requestNodes(['ada97092-5d66-4eb3-a266-eea90d738da2','684e2b62-d710-4e05-9530-d9408a442e7e']);
-
-
 const summarizeGraph = async () => {
-
     const nodesHash = await requestNodes(['089ef556-dfff-4ff2-9733-654645be56fe'], {});
-
     return nodesHash;
 }
 
