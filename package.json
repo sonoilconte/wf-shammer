@@ -1,0 +1,23 @@
+{
+  "name": "wf-shammer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercise.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonoilconte/wf-shammer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonoilconte/wf-shammer/issues"
+  },
+  "homepage": "https://github.com/sonoilconte/wf-shammer#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.2.2"
+  }
+}
